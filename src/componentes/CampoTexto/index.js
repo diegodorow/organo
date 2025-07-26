@@ -1,13 +1,22 @@
-import './CampoTexto.css'
+import "./CampoTexto.css";
 
 const CampoTexto = (props) => {
-    const placeholderModificada = `${props.placeholder}...` // interpolação de string no JavaScript
-    return (
-        <div className="campo-texto">
-            <label>{props.label}</label>
-            <input placeholder={placeholderModificada} />
-        </div>
-    )
-}
+  const placeholderModificada = `${props.placeholder}...`; // interpolação de string no JavaScript
 
-export default CampoTexto
+  const aoDigitado = (evento) => {
+    props.aoAlterado(evento.target.value);
+  };
+  return (
+    <div className="campo-texto">
+      <label>{props.label}</label>
+      <input
+        value={props.valor}
+        onChange={aoDigitado}
+        required={props.obrigatorio}
+        placeholder={placeholderModificada}
+      />
+    </div>
+  );
+};
+
+export default CampoTexto;
