@@ -23,8 +23,10 @@ const Time = (props) => {
                 key={colaborador.nome}
                 nome={colaborador.nome}
                 cargo={colaborador.cargo}
+                favorito={colaborador.favorito}
                 imagem={colaborador.imagem}
                 aoDeletar={props.aoDeletar}
+                aoFavoritar={props.aoFavoritar}
               />
             );
           })}

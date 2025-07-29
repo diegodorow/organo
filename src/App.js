@@ -72,6 +72,16 @@ function App() {
     setTimes([...times, { ...novoTime, id: uuidv4() }]);
   }
 
+  function resolverFavorito(id) {
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) {
+          colaborador.favorito = !colaborador.favorito;
+        }
+        return colaborador;
+      })
+    );
+  }
   return (
     <div className="App">
       <Banner />
@@ -83,7 +93,6 @@ function App() {
 
       {times.map((time) => (
         <Time
-          mudarCor={mudarCorDoTime}
           id={time.id}
           key={time.nome}
           nome={time.nome}
@@ -91,7 +100,9 @@ function App() {
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.time === time.nome
           )}
+          mudarCor={mudarCorDoTime}
           aoDeletar={deletarColaborador}
+          aoFavoritar={resolverFavorito}
         />
       ))}
       <Rodape />
